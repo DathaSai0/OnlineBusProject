@@ -15,7 +15,7 @@
   padding: 10px;
 }
 #ticket-booked-container .color-green {
-  color: greenyellow;
+  color: #85bb65;
 }
 .booked-Data-container {
   padding: 20px;
@@ -44,4 +44,35 @@
 }
 .seats-container h3 {
   margin-bottom: 20px;
+}
+.booked-bus-name-div,
+.booked-arrival-departure-div {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 769px) {
+  .booked-bus-name-div {
+    text-align: center;
+  }
+  .booked-Data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* text-align: center; */
+  }
+  .booked-arrival-departure-div {
+    text-align: center;
+  }
+}
+@media (max-width: 426px) {
+  .booked-arrival-departure-div {
+    display: flex;
+    flex-direction: column;
+  }
+  .booked-Data {
+    text-align: center;
+  }
+  .color-green {
+    text-align: center;
+  }
 }

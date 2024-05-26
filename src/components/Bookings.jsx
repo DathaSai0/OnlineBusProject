@@ -23,22 +23,25 @@ function Bookings() {
             <div className="booked-arrival-departure-div">
               <div>
                 <h4>Departure Time</h4>
-                <h5>{toDate}</h5>
-                <h5>{obj.departureTime}</h5>
-                <h5>{obj.from}</h5>
+                <p>{toDate}</p>
+                <p>{obj.departureTime}</p>
+                <p>{obj.from}</p>
               </div>
               <div>
                 <h4>Arrival Time</h4>
-                <h5>{toDate}</h5>
-                <h5> {obj.arrivalTime}</h5>
-                <h5>{obj.to}</h5>
+                <p>{toDate}</p>
+                <p> {obj.arrivalTime}</p>
+                <p>{obj.to}</p>
               </div>
             </div>
             <div className="booked-price-div">
-              <h2>Price Per Ticket: </h2>
-              <h3 className="color-green">₹{obj.price}</h3>
-              <h2>Total Price: </h2>
-              <h3 className="color-green">₹{obj.TotalPrice}</h3>
+              <h4>
+                Ticket Price: <span className="color-green">₹{obj.price}</span>
+              </h4>
+              <h4>
+                Total Price:
+                <span className="color-green">₹{obj.TotalPrice}</span>
+              </h4>
             </div>
           </div>
           <div className="seats-container">
