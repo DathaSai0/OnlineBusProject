@@ -1,0 +1,68 @@
+.bus-card {
+  border: 1px solid black;
+  border-radius: 40px;
+  padding: 25px;
+  margin: 16px;
+  width: 80%;
+  /* background-color: black; */
+  /* color: #ffff; */
+  color: black;
+}
+.Card-Data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.show-seats-btn {
+  text-align: center;
+  margin-top: 20px;
+}
+.show-seats-btn button {
+  background-color: #ffc40c;
+  color: #ffff;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+}
+.bus-card h1 {
+  color: #ffc40c;
+}
+.bus-name {
+  margin-top: 0;
+  color: #ffc40c;
+}
+.bus-card .Card-Data .bus-name-div h1 {
+  text-align: start;
+}
+
+.bus-card p {
+  margin: 8px 0;
+}
+.arrival-departure-div {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+@media (max-width: 768px) {
+  .Card-Data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .bus-name {
+    margin-bottom: 20px;
+  }
+  .bus-card .Card-Data .bus-name-div h1 {
+    text-align: center;
+  }
+}
+@media (max-width: 426px) {
+  .arrival-departure-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px 0 20px 0;
+  }
+}

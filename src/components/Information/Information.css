@@ -1,0 +1,28 @@
+.information-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  background: rgba(0, 0, 0, 0.155);
+}
+.online-bus-services {
+  background-color: black;
+  width: 80%;
+  padding: 50px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+.online-bus-services h3 {
+  color: #ffc40c;
+  margin-bottom: 20px;
+}
+.online-bus-services p,
+.online-bus-services ul li {
+  color: #ffff;
+}
+@media (max-width: 376px) {
+  .information-container {
+    font-size: 15px;
+  }
+}

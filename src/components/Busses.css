@@ -1,0 +1,23 @@
+.Bus-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Bus-container h1 {
+  color: #ffc40c;
+  text-align: center;
+}
+body {
+  background-color: rgba(0, 0, 0, 0.155);
+}
+.Bus-section-top {
+  margin-top: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Bus-section-top h1 {
+  color: #ffc40c;
+}

@@ -1,0 +1,47 @@
+#ticket-booked-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.success {
+  margin: 50px;
+}
+.color-red {
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+#ticket-booked-container .color-green {
+  color: greenyellow;
+}
+.booked-Data-container {
+  padding: 20px;
+  border: 1px solid black;
+  width: 70%;
+  border-radius: 100px;
+  margin-bottom: 50px;
+}
+.booked-Data,
+.booked-arrival-departure-div {
+  display: flex;
+}
+.booked-Data {
+  align-items: center;
+  justify-content: center;
+}
+.booked-arrival-departure-div {
+  width: 50%;
+  justify-content: space-evenly;
+}
+.booked-bus-name-div {
+  color: #ffc40c;
+}
+.seats-container {
+  text-align: center;
+}
+.seats-container h3 {
+  margin-bottom: 20px;
+}
