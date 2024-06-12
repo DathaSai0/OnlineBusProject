@@ -12,7 +12,11 @@ function Bookings() {
   };
   return (
     <div id="ticket-booked-container">
-      <h1 className="color-green success">Successfully Booked Tickets</h1>
+      <h1 className="color-green success">
+        {Bookingdetails.length === 0
+          ? "There are no current active bookings..!"
+          : "Successfully Booked Tickets"}
+      </h1>
       {Bookingdetails.map((obj) => (
         <div className="booked-Data-container">
           <div className="booked-Data">

@@ -21,9 +21,14 @@
   height: 50px;
   font-size: 18px;
 }
+.Login-btn-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .Login-btn-container button {
   background-color: #ffc40c;
-  color: #fff;
+  color: black;
   padding: 10px 30px;
   border-radius: 10px;
   border: none;
@@ -35,4 +40,21 @@
 }
 #login-form .red-color {
   color: red;
+}
+.signupBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signupBtn h4 {
+  margin-right: 10px;
+  margin-bottom: 0;
+  font-size: 19px;
+}
+.signupBtn a {
+  display: flex;
+  align-items: center;
+  color: #ffc40c;
+  font-size: 19px;
+  font-weight: bold;
 }

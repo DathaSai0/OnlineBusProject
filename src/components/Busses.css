@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* background-color: black; */
 }
 .Bus-container h1 {
   color: #ffc40c;

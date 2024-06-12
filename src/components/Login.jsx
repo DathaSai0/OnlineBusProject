@@ -3,51 +3,32 @@ import "./Login.css";
 import { StationContext } from "./StationContext";
 import { Link, useNavigate } from "react-router-dom";
 function Login() {
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [email, setemail] = useState("");
+  const [loginNumber, setLoginNumber] = useState("");
+  const [loginPassword, setloginPassword] = useState("");
   const [err, setErr] = useState({
-    userNameErr: "",
-    mobileNumberErr: "",
-    emailErr: "",
+    loginNumberErr: "",
+    loginPasswordErr: "",
   });
-  const { userLoggedIn, setuserLoggedIn, userName, setUserName } =
-    useContext(StationContext);
+  const { userLoggedIn, setuserLoggedIn } = useContext(StationContext);
   const navigate = useNavigate();
-  let emailregexp =
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  function signUpFunction(e) {
+    e.preventDefault();
+    navigate("/signup");
+  }
   function formValidation(e) {
     e.preventDefault();
-    let logging = true;
-    if (userName.length < 3) {
-      setErr((prev) => ({ ...prev, userNameErr: "Enter the proper Name" }));
-      logging = false;
-    } else {
-      setErr((prev) => ({ ...prev, userNameErr: "" }));
-      logging = true;
+    let registeredUsers = JSON.parse(localStorage.getItem("usersArr"));
+    console.log(registeredUsers);
+    let count = 0;
+    for (let obj of registeredUsers) {
+      if (obj.number === loginNumber && obj.password === loginPassword) {
+        navigate("/bookings");
+      } else {
+        count++;
+      }
     }
-    if (mobileNumber.length !== 10) {
-      setErr((prev) => ({
-        ...prev,
-        mobileNumberErr: "Enter the proper Phone number",
-      }));
-      logging = false;
-    } else {
-      setErr((prev) => ({
-        ...prev,
-        mobileNumberErr: "",
-      }));
-      logging = true;
-    }
-    if (!emailregexp.test(email)) {
-      setErr((prev) => ({ ...prev, emailErr: "Enter the valid email id" }));
-      logging = false;
-    } else {
-      setErr((prev) => ({ ...prev, emailErr: "" }));
-      logging = true;
-    }
-    if (logging) {
-      setuserLoggedIn(true);
-      navigate("/buses");
+    if (count === registeredUsers.length) {
+      alert("login credentials are incorrect");
     }
   }
   return (
@@ -58,42 +39,34 @@ function Login() {
           <div>
             <input
               type="text"
-              placeholder="Username"
-              value={userName}
+              placeholder="Enter the mobile Number"
+              value={loginNumber}
               onChange={(e) => {
-                setUserName(e.target.value);
+                setLoginNumber(e.target.value);
               }}
             />
-            {err.userNameErr && <p className="red-color">{err.userNameErr}</p>}
           </div>
           <div>
             <input
-              type="text"
-              placeholder="Mobile Number"
-              value={mobileNumber}
+              type="password"
+              placeholder="Enter the Password"
+              value={loginPassword}
               onChange={(e) => {
-                setMobileNumber(e.target.value);
+                setloginPassword(e.target.value);
               }}
             />
             {err.mobileNumberErr && (
               <p className="red-color">{err.mobileNumberErr}</p>
             )}
           </div>
-          <div>
-            <input
-              type="text"
-              placeholder="email address"
-              value={email}
-              onChange={(e) => {
-                setemail(e.target.value);
-              }}
-            />
-            {err.emailErr && <p className="red-color">{err.emailErr}</p>}
-          </div>
-          <div className="Login-btn-container">
+          <div className="Login-btn-container ">
             <button type="submit" onClick={formValidation}>
               Login
             </button>
+          </div>
+          <div className="signupBtn">
+            <h4>Please create an account if you don't have one </h4>
+            <Link to={"/signup"}>Sign Up</Link>
           </div>
         </form>
       </div>

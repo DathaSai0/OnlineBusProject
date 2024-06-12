@@ -4,11 +4,12 @@
   padding: 25px;
   margin: 16px;
   width: 80%;
-  /* background-color: black; */
-  /* color: #ffff; */
+  background-color: black;
+  color: #ffff;
   color: black;
 }
 .Card-Data {
+  color: #ffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
