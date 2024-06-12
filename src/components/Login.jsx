@@ -2,73 +2,114 @@ import React, { useContext, useState } from "react";
 import "./Login.css";
 import { StationContext } from "./StationContext";
 import { Link, useNavigate } from "react-router-dom";
+
 function Login() {
-  const [loginNumber, setLoginNumber] = useState("");
-  const [loginPassword, setloginPassword] = useState("");
   const [err, setErr] = useState({
     loginNumberErr: "",
     loginPasswordErr: "",
   });
-  const { userLoggedIn, setuserLoggedIn } = useContext(StationContext);
+  const {
+    setuserLoggedIn,
+    loginNumber,
+    setLoginNumber,
+    loginPassword,
+    setLoginPassword,
+  } = useContext(StationContext);
   const navigate = useNavigate();
-  function signUpFunction(e) {
-    e.preventDefault();
-    navigate("/signup");
-  }
+  let passwordRegexp = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
   function formValidation(e) {
     e.preventDefault();
-    let registeredUsers = JSON.parse(localStorage.getItem("usersArr"));
-    console.log(registeredUsers);
-    let count = 0;
-    for (let obj of registeredUsers) {
-      if (obj.number === loginNumber && obj.password === loginPassword) {
-        navigate("/bookings");
-      } else {
-        count++;
-      }
+    let isValid = true;
+    if (loginNumber.trim().length !== 10) {
+      setErr((err) => ({
+        ...err,
+        loginNumberErr: "Mobile Number should contain 10 digits",
+      }));
+      isValid = false;
+    } else {
+      setErr((err) => ({
+        ...err,
+        loginNumberErr: "",
+      }));
     }
-    if (count === registeredUsers.length) {
-      alert("login credentials are incorrect");
+
+    if (!passwordRegexp.test(loginPassword)) {
+      setErr((err) => ({
+        ...err,
+        loginPasswordErr:
+          "Password should have at least a number and at least a special character.",
+      }));
+      isValid = false;
+    } else {
+      setErr((err) => ({
+        ...err,
+        loginPasswordErr: "",
+      }));
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    let registeredUsers = JSON.parse(localStorage.getItem("usersArr")) || [];
+    let userFound = registeredUsers.find(
+      (user) => user.number === loginNumber && user.password === loginPassword
+    );
+
+    if (userFound) {
+      setuserLoggedIn(true);
+      navigate("/bookings");
+    } else {
+      alert("Login credentials are incorrect");
     }
   }
+
   return (
-    <div class="login-container">
+    <div className="login-container">
       <h2>Login to OnlineBus..</h2>
       <div className="form-container">
-        <form id="login-form">
-          <div>
+        <form action="" className="LoginForm">
+          <div className="form-div">
+            <label htmlFor="number">Mobile Number</label>
             <input
               type="text"
-              placeholder="Enter the mobile Number"
+              id="number"
+              name="number"
               value={loginNumber}
               onChange={(e) => {
                 setLoginNumber(e.target.value);
               }}
             />
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="Enter the Password"
-              value={loginPassword}
-              onChange={(e) => {
-                setloginPassword(e.target.value);
-              }}
-            />
-            {err.mobileNumberErr && (
-              <p className="red-color">{err.mobileNumberErr}</p>
+            {err.loginNumberErr && (
+              <p className="red-color">{err.loginNumberErr}</p>
             )}
           </div>
-          <div className="Login-btn-container ">
+          <div className="form-div">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={loginPassword}
+              onChange={(e) => {
+                setLoginPassword(e.target.value);
+              }}
+            />
+            {err.loginPasswordErr && (
+              <p className="red-color">{err.loginPasswordErr}</p>
+            )}
+          </div>
+          <div className="form-div">
             <button type="submit" onClick={formValidation}>
               Login
             </button>
           </div>
-          <div className="signupBtn">
-            <h4>Please create an account if you don't have one </h4>
-            <Link to={"/signup"}>Sign Up</Link>
-          </div>
         </form>
+        <div className="signupBtn">
+          <h4>Please create an account if you don't have one </h4>
+          <Link to={"/signup"}>Sign Up</Link>
+        </div>
       </div>
     </div>
   );

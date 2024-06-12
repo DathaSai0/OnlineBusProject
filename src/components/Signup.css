@@ -1,5 +1,9 @@
+.creatAccountDiv {
+  margin-top: 100px !important;
+  text-align: center;
+  margin-bottom: 50px;
+}
 .signupForm {
-  margin-top: 200px !important;
   width: 500px;
   margin: 0 auto;
   padding: 20px;
@@ -25,6 +29,9 @@
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+.form-group .signred {
+  color: red;
 }
 
 .form-group button {

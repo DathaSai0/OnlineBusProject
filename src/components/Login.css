@@ -38,13 +38,48 @@
   outline: none;
   border: none;
 }
-#login-form .red-color {
+.LoginForm {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+.form-div label {
+  display: block;
+  text-align: start;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.form-div {
+  margin-bottom: 20px;
+}
+.form-div input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.form-div button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffc40c;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.LoginForm .red-color {
   color: red;
 }
 .signupBtn {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 .signupBtn h4 {
   margin-right: 10px;

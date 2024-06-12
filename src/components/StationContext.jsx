@@ -11,6 +11,15 @@ export const StationProvider = ({ children }) => {
   const [userLoggedIn, setuserLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
 
+  const [loginNumber, setLoginNumber] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [user, setUser] = useState({
+    name: "",
+    number: "",
+    password: "",
+    ReEnteredPassword: "",
+  });
+
   return (
     <StationContext.Provider
       value={{
@@ -28,6 +37,12 @@ export const StationProvider = ({ children }) => {
         setuserLoggedIn,
         userName,
         setUserName,
+        user,
+        setUser,
+        loginNumber,
+        setLoginNumber,
+        loginPassword,
+        setLoginPassword,
       }}
     >
       {children}

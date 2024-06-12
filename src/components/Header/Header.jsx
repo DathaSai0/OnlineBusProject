@@ -6,7 +6,12 @@ import { Link } from "react-router-dom";
 import { StationContext } from "../StationContext";
 const Header = () => {
   const nav = useRef();
-  const { userName } = useContext(StationContext);
+  const { userName, userLoggedIn, loginNumber, loginPassword } =
+    useContext(StationContext);
+  let localData = JSON.parse(localStorage.getItem("usersArr"));
+  let loggeduserdata = localData.filter((obj) => {
+    return obj.number === loginNumber && obj.password === loginPassword;
+  });
   return (
     <header className="header">
       <div className="logo-container">
@@ -17,7 +22,7 @@ const Header = () => {
         <Link to="/buses">Buses</Link>
         <Link to="/bookings">My Bookings</Link>
         <Link to="/login">
-          <FaUser /> &nbsp; {userName === "" ? "Login" : userName}
+          <FaUser /> &nbsp; {userLoggedIn ? loggeduserdata[0].name : "Login"}
         </Link>
       </nav>
       <div className="menu">
