@@ -57,14 +57,14 @@ h1 {
   .header .nav-items {
     display: none;
     flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 25px;
     background-color: black;
     padding: 10px;
   }
   .header .menu-open {
     display: block;
+    position: absolute;
+    top: 60px;
+    right: 25px;
     background-color: #000000c4;
   }
   .nav-items > a {

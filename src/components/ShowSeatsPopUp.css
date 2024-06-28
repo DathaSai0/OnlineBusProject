@@ -11,10 +11,32 @@
   color: black;
   width: 100%;
 }
-.Booking-container {
-  display: flex;
-  gap: 0 50px;
-  /* justify-content: ; */
+body {
+  background-color: #ffff !important;
+}
+.Booking-container div {
+  /* display: flex; */
+  /* flex-direction: column;*/
+  justify-content: center;
+  /* align-items: center;  */
+  /* text-align: center; */
+}
+.reference-div {
+  margin-top: 10px;
+}
+.btn-span-container1 {
+  margin-bottom: 5px;
+}
+.btn-span-container1 button {
+  margin-right: 40px;
+  background-color: #ffff;
+  border: 1px solid greenyellow;
+  box-shadow: 1px 1px 1px greenyellow;
+}
+.btn-span-container2 button {
+  margin-right: 10px;
+  background-color: rgba(211, 211, 211, 0.763);
+  border: none;
 }
 #close-btn {
   position: fixed;
@@ -38,7 +60,7 @@
   display: grid;
   grid-template-columns: repeat(4, 50px);
   gap: 10px;
-  text-align: left;
+  text-align: center;
 }
 
 .seat-btn {
@@ -57,7 +79,13 @@
 .seat-row .selectedSeat {
   background-color: #ffc40c;
 }
-
+.reference-div {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.reference-div div {
+  width: 300px;
+}
 #close-btn {
   padding: 5px 10px;
   background-color: white;
@@ -70,7 +98,7 @@
   border: 2px solid #ffc40c;
 }
 .popup-content p {
-  text-align: left;
+  text-align: center;
   font-size: 25px;
   color: #ffc40c;
 }
@@ -96,12 +124,17 @@
   margin-top: 50px;
 }
 .disabled {
-  background-color: lightgrey;
+  background-color: rgba(211, 211, 211, 0.763);
+}
+.NormalSeats {
+  background-color: #ffff;
+  border: 1px solid greenyellow;
+  box-shadow: 1px 1px 1px greenyellow;
 }
 
-.reserved {
+/* .reserved {
   background-color: lightgrey;
-}
+} */
 .normal-color {
   background-color: #ffc40c;
   border: none;

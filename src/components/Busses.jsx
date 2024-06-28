@@ -4,6 +4,7 @@ import BusCard from "./BusCard";
 import "./Busses.css";
 import SearchBox from "./Banner/SearchBox";
 import "./Banner/SearchBox.css";
+import Footer from "./Footer";
 
 export default function Buses() {
   const { Busdetails } = useContext(StationContext);
@@ -21,6 +22,7 @@ export default function Buses() {
           <p>Loading....</p>
         )}
       </div>
+      <Footer />
     </>
   );
 }

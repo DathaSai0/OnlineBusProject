@@ -7,6 +7,7 @@ import { StationProvider } from "./components/StationContext";
 import Bookings from "./components/Bookings";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Footer from "./components/Footer";
 
 function App() {
   return (

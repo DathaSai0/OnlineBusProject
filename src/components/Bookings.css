@@ -23,6 +23,7 @@
   width: 70%;
   border-radius: 100px;
   margin-bottom: 50px;
+  background-color: black;
 }
 .booked-Data,
 .booked-arrival-departure-div {
@@ -33,6 +34,7 @@
   justify-content: center;
 }
 .booked-arrival-departure-div {
+  color: #ffff;
   width: 50%;
   justify-content: space-evenly;
 }
@@ -43,7 +45,11 @@
   text-align: center;
 }
 .seats-container h3 {
+  color: #ffff;
   margin-bottom: 20px;
+}
+.booked-price-div h4 {
+  color: #ffff;
 }
 .booked-bus-name-div,
 .booked-arrival-departure-div {

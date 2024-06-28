@@ -1,7 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./ShowSeatsPopUp.css";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { StationContext } from "./StationContext";
+import seatLogo from "./Assets/chair.png";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Tooltip, OverlayTrigger } from "react-bootstrap";
 
 function ShowSeatsPopUp({ onClose, BusDetails }) {
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -9,7 +12,7 @@ function ShowSeatsPopUp({ onClose, BusDetails }) {
   const { Bookingdetails, setBookingdetails, userLoggedIn } =
     useContext(StationContext);
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const seats = BusDetails.seats || [];
 
@@ -67,74 +70,78 @@ function ShowSeatsPopUp({ onClose, BusDetails }) {
 
         <div className="Booking-container">
           <div>
+            <div className="reference-div">
+              <div className="btn-span-container1">
+                <button>
+                  <img src={seatLogo} alt="seat" width="20px" />
+                </button>
+                <span>Available Seats</span>
+              </div>
+              <div className="btn-span-container2">
+                <button>
+                  <img src={seatLogo} alt="seat" width="20px" />
+                </button>
+                <span>Not Available Seats</span>
+              </div>
+            </div>
             <p>Frontside</p>
             <div className="seats-grid">
               {seats.map((seat, index) => (
-                <button
+                <OverlayTrigger
                   key={index}
-                  className={`seat-btn ${
-                    selectedSeats.includes(seat.id) ? "selected" : ""
-                  } ${seat.status === "disabled" ? "disabled" : ""} ${
-                    seat.status === "reserved" ? "reserved" : ""
-                  }`}
-                  onClick={() => {
-                    if (
-                      seat.status !== "disabled" &&
-                      seat.status !== "reserved"
-                    ) {
-                      toggleSeatSelection(seat.id);
-                    }
-                  }}
-                  disabled={
-                    seat.status === "disabled" || seat.status === "reserved"
+                  placement="top"
+                  overlay={
+                    <Tooltip id={`tooltip-${index}`}>
+                      {seat.status === "disabled" || seat.status === "reserved"
+                        ? seat.id + " is not available"
+                        : seat.id + " is available"}
+                    </Tooltip>
                   }
                 >
-                  {seat.id}
-                </button>
+                  <button
+                    className={`seat-btn ${
+                      selectedSeats.includes(seat.id) ? "selected" : ""
+                    } ${
+                      seat.status === "disabled" || seat.status === "reserved"
+                        ? "disabled"
+                        : "NormalSeats"
+                    }`}
+                    onClick={() => {
+                      if (
+                        seat.status !== "disabled" &&
+                        seat.status !== "reserved"
+                      ) {
+                        toggleSeatSelection(seat.id);
+                      }
+                    }}
+                    disabled={
+                      seat.status === "disabled" || seat.status === "reserved"
+                    }
+                  >
+                    <img src={seatLogo} alt="seat" width="20px" />
+                  </button>
+                </OverlayTrigger>
               ))}
             </div>
             <p>Backside</p>
-          </div>
-
-          <div className="booking-section">
-            <div>
-              <h3>
-                Bus Name: <span>{BusDetails.name}</span>
-              </h3>
-              <h3>From: {BusDetails.from}</h3>
-              <h3>To: {BusDetails.to}</h3>
-              <h3>Departure Time: {BusDetails.departureTime}</h3>
-              <h3>Arrival Time: {BusDetails.arrivalTime}</h3>
-              <h3>
-                Selected Seats: {selectedSeats.map((number) => number + ",")}
-              </h3>
-              <h2>
-                Price per seat:{" "}
-                <span className="green_color">₹{BusDetails.price}</span>
-              </h2>
-              <h2>
-                Total Price:{" "}
-                <span className="green_color">₹{calculateTotalPrice()}</span>
-              </h2>
-              <div className="Book-Now-Btn-div">
-                {userLoggedIn ? (
-                  <button
-                    onClick={BookingTickets}
-                    disabled={BookNow()}
-                    className={BookNow() ? "disabled-color" : "normal-color"}
-                  >
-                    Book Now
-                  </button>
-                ) : (
-                  <button
-                    onClick={BookingTickets}
-                    disabled={BookNow()}
-                    className={BookNow() ? "disabled-color" : "normal-color"}
-                  >
-                    Book Now
-                  </button>
-                )}
-              </div>
+            <div className="Book-Now-Btn-div">
+              {userLoggedIn ? (
+                <button
+                  onClick={BookingTickets}
+                  disabled={BookNow()}
+                  className={BookNow() ? "disabled-color" : "normal-color"}
+                >
+                  Book Now
+                </button>
+              ) : (
+                <button
+                  onClick={BookingTickets}
+                  disabled={BookNow()}
+                  className={BookNow() ? "disabled-color" : "normal-color"}
+                >
+                  Book Now
+                </button>
+              )}
             </div>
           </div>
         </div>
